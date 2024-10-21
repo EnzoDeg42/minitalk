@@ -16,7 +16,7 @@ void	ft_receive_response(int sig)
 {
 	if (sig == SIGUSR2)
 	{
-		printf("🟢 The server received the message\n");
+		ft_printf("🟢 The server received the message\n");
 		exit(0);
 	}
 }
@@ -55,7 +55,7 @@ void	ft_send_message(int server_pid, const char *message)
 		sleep(1);
 		i++;
 	}
-	printf("🔴 Server did not respond, timeout\n");
+	ft_printf("🔴 Server did not respond, timeout\n");
 }
 
 int	main(int argc, char *argv[])
@@ -64,13 +64,13 @@ int	main(int argc, char *argv[])
 
 	if (argc != 3)
 	{
-		printf("Usage: %s <pid> <message>\n", argv[0]);
+		ft_printf("Usage: %s <pid> <message>\n", argv[0]);
 		return (1);
 	}
 	server_pid = atoi(argv[1]);
 	if (server_pid <= 0)
 	{
-		printf("Error: invalid pid\n");
+		ft_printf("Error: invalid pid\n");
 		return (1);
 	}
 	signal(SIGUSR2, ft_receive_response);
